@@ -1,0 +1,18 @@
+[
+    {
+        "id": "arquitecturas-serverless",
+        "titulo": "Logrando Arquitecturas Serverless",
+        "resumen": "Cómo construir sitios web potentes y rápidos sin necesidad de un servidor backend tradicional.",
+        "categoria": "Desarrollo",
+        "fecha": "12 Abr, 2026",
+        "archivo": "posts/arquitecturas-serverless.html"
+    },
+    {
+        "id": "optimizacion-web",
+        "titulo": "Optimización de Rendimiento",
+        "resumen": "Técnicas esenciales para lograr una puntuación del 100% en Google Lighthouse.",
+        "categoria": "Performance",
+        "fecha": "10 Abr, 2026",
+        "archivo": "posts/optimizacion-web.html"
+    }
+]
