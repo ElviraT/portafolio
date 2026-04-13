@@ -72,6 +72,24 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('scroll', updateNavbarBackground);
 
     // =========================================================================
+    // 4.5. EFECTO GLOW PREMIUM EN TARJETAS
+    // =========================================================================
+    const initGlowEffect = () => {
+        const cards = document.querySelectorAll('.project-card');
+        cards.forEach(card => {
+            card.onmousemove = (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                card.style.setProperty('--mouse-x', `${x}px`);
+                card.style.setProperty('--mouse-y', `${y}px`);
+            };
+        });
+    };
+
+    initGlowEffect(); // Inicializar para las tarjetas estáticas de la galería
+
+    // =========================================================================
     // 5. SISTEMA DE BLOG: CARGA DE ARCHIVOS LOCALES (JSON + HTML)
     // =========================================================================
 
@@ -86,7 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
         window.blogPostsData = data;
         blogLoader.style.display = 'none';
         blogGrid.classList.remove('opacity-0');
-        
+
         let fullHtml = '';
         data.forEach((post, index) => {
             fullHtml += `
@@ -109,29 +127,37 @@ document.addEventListener('DOMContentLoaded', () => {
                 </article>
             `;
         });
-        
+
         blogGrid.innerHTML = fullHtml;
 
         // Una vez que TODO el HTML está en el DOM, actualizamos los contadores de cada una
         data.forEach((post, index) => {
             updateCardViews(post.id, index);
         });
+
+        // Re-inicializar el efecto glow para las nuevas tarjetas inyectadas del blog
+        initGlowEffect();
     }
 
+    // Credenciales de Supabase (Reemplazar con tus datos)
+    const SUPABASE_URL = 'https://jqarujoosiauogetmhcb.supabase.co';
+    const SUPABASE_ANON_KEY = 'sb_publishable_QNJYdF9-ndthyOqf_tdrAw_2bzrsrJ9';
+
     const updateCardViews = (postId, index) => {
-        const namespace = 'elvirateran_v2_prod'; 
-        const key = `p_${postId.replace(/-/g, '_')}`;
-        
-        fetch(`https://api.countapi.xyz/get/${namespace}/${key}`)
+        fetch(`${SUPABASE_URL}/rest/v1/page_views?slug=eq.${postId}&select=view_count`, {
+            headers: {
+                'apikey': SUPABASE_ANON_KEY,
+                'Authorization': `Bearer ${SUPABASE_ANON_KEY}`
+            }
+        })
             .then(res => res.json())
             .then(data => {
                 const element = document.getElementById(`card-views-${index}`);
-                if (element) element.textContent = data.value || 0;
+                if (element) element.textContent = data.length > 0 ? data[0].view_count : 0;
             })
             .catch(() => {
-                // Si falla, intentamos mostrar el valor guardado localmente
                 const element = document.getElementById(`card-views-${index}`);
-                if (element) element.textContent = localStorage.getItem('count_' + key) || 0;
+                if (element) element.textContent = localStorage.getItem(`count_${postId}`) || 0;
             });
     }
 
@@ -158,45 +184,51 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const bodyContent = document.getElementById('modal-post-body');
         const viewCountElement = document.getElementById('modal-post-views');
-        
+
         bodyContent.innerHTML = '<p class="text-center py-10">Cargando contenido...</p>';
-        viewCountElement.textContent = '...'; 
+        viewCountElement.textContent = '...';
         document.getElementById('modal-post-title').textContent = post.titulo;
         document.getElementById('modal-post-date').textContent = post.fecha;
 
-        // Lógica de Conteo (Namespace nuevo para empezar de cero)
-        const namespace = 'elvirateran_v2_prod'; 
-        const key = `p_${post.id.replace(/-/g, '_')}`;
-        const hasViewedKey = `viewed_${key}`;
-        
-        // 1. Definimos si debemos INCREMENTAR o solo CONSULTAR
+        // Lógica de Conteo Supabase
+        const hasViewedKey = `viewed_${post.id}`;
         const mustIncrement = !localStorage.getItem(hasViewedKey);
-        const apiMethod = mustIncrement ? 'hit' : 'get';
 
-        fetch(`https://api.countapi.xyz/${apiMethod}/${namespace}/${key}`)
-            .then(res => res.json())
-            .then(data => {
-                const val = data.value || 0;
-                viewCountElement.textContent = val;
-                
-                // Si fue hit exitoso, marcamos como "visto" para no volver a sumar
-                if (mustIncrement) {
-                    localStorage.setItem(hasViewedKey, 'true');
-                }
-                
-                const cardCounter = document.getElementById(`card-views-${index}`);
-                if(cardCounter) cardCounter.textContent = val;
+        if (mustIncrement) {
+            // Incrementar visita a través de RPC
+            fetch(`${SUPABASE_URL}/rest/v1/rpc/increment_page_view`, {
+                method: 'POST',
+                headers: {
+                    'apikey': SUPABASE_ANON_KEY,
+                    'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ page_slug: post.id })
             })
-            .catch(() => {
-                // Fallback: Si la API falla, mostramos un número coherente
-                let localViews = parseInt(localStorage.getItem('count_' + key) || "0");
-                if (mustIncrement) {
-                    localViews++;
-                    localStorage.setItem('count_' + key, localViews);
+                .then(res => res.json())
+                .then(val => {
+                    viewCountElement.textContent = val;
                     localStorage.setItem(hasViewedKey, 'true');
+                    localStorage.setItem(`count_${post.id}`, val);
+
+                    const cardCounter = document.getElementById(`card-views-${index}`);
+                    if (cardCounter) cardCounter.textContent = val;
+                })
+                .catch(err => console.error("Error al incrementar vistas:", err));
+        } else {
+            // Solo consultar
+            fetch(`${SUPABASE_URL}/rest/v1/page_views?slug=eq.${post.id}&select=view_count`, {
+                headers: {
+                    'apikey': SUPABASE_ANON_KEY,
+                    'Authorization': `Bearer ${SUPABASE_ANON_KEY}`
                 }
-                viewCountElement.textContent = localViews;
-            });
+            })
+                .then(res => res.json())
+                .then(data => {
+                    const val = data.length > 0 ? data[0].view_count : 0;
+                    viewCountElement.textContent = val;
+                });
+        }
 
         // 2. Fetch del contenido HTML real
         fetch(post.archivo)
@@ -225,7 +257,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <p>Optimizar imágenes, minificar CSS/JS y usar Lazy Loading son los pilares de una web rápida.</p>
                     `
                 };
-                
+
                 bodyContent.innerHTML = '<div class="leading-relaxed text-brand-text space-y-4">' + (localFallbacks[post.id] || "Contenido no disponible en modo local.") + '</div>';
             });
 

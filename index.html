@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html lang="es" class="scroll-smooth">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <!-- SEO Primario -->
     <title>Elvira Terán | Ingeniera de Sistemas & Desarrolladora Frontend Senior</title>
     <meta name="title" content="Elvira Terán | Ingeniera de Sistemas & Desarrolladora Frontend Senior">
-    <meta name="description" content="Especialista en desarrollo frontend y arquitectura de software. Ingeniera de Sistemas enfocada en crear productos digitales de alto rendimiento, escalables y con estética premium.">
-    <meta name="keywords" content="Elvira Terán, Ingeniera de Sistemas, Frontend Developer, Desarrollador Web, Portfolio, JavaScript, CSS, HTML5, React, Arquitectura de Software">
+    <meta name="description"
+        content="Especialista en desarrollo frontend y arquitectura de software. Ingeniera de Sistemas enfocada en crear productos digitales de alto rendimiento, escalables y con estética premium.">
+    <meta name="keywords"
+        content="Elvira Terán, Ingeniera de Sistemas, Frontend Developer, Desarrollador Web, Portfolio, JavaScript, CSS, HTML5, React, Arquitectura de Software">
     <meta name="author" content="Elvira Terán">
     <link rel="canonical" href="https://elvirat.github.io/portafolio/">
 
@@ -16,7 +19,8 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://elvirat.github.io/portafolio/">
     <meta property="og:title" content="Elvira Terán | Ingeniera de Sistemas & Frontend Developer">
-    <meta property="og:description" content="Portafolio profesional de Elvira Terán. Soluciones de ingeniería aplicadas al desarrollo frontend moderno.">
+    <meta property="og:description"
+        content="Portafolio profesional de Elvira Terán. Soluciones de ingeniería aplicadas al desarrollo frontend moderno.">
     <meta property="og:image" content="https://elvirat.github.io/portafolio/assets/images/logo.png">
     <meta property="og:image:secure_url" content="https://elvirat.github.io/portafolio/assets/images/logo.png">
     <meta property="og:image:type" content="image/png">
@@ -27,7 +31,8 @@
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://elvirat.github.io/portafolio/">
     <meta property="twitter:title" content="Elvira Terán | Ingeniera de Sistemas & Frontend Developer">
-    <meta property="twitter:description" content="Portafolio profesional de Elvira Terán. Soluciones de ingeniería aplicadas al desarrollo frontend moderno.">
+    <meta property="twitter:description"
+        content="Portafolio profesional de Elvira Terán. Soluciones de ingeniería aplicadas al desarrollo frontend moderno.">
     <meta property="twitter:image" content="https://elvirat.github.io/portafolio/assets/images/logo.png">
 
     <!-- Mas compatibilidad -->
@@ -52,9 +57,9 @@
       "description": "Especialista en Desarrollo Frontend con enfoque en arquitectura y experiencia de usuario."
     }
     </script>
-    
+
     <link rel="stylesheet" href="css/styles.css">
-    
+
     <!-- Script FOUC: Establecer Tema Inicial -->
     <script>
         if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
@@ -63,7 +68,7 @@
             document.documentElement.classList.remove('dark');
         }
     </script>
-    
+
     <!-- Tailwind CSS (via CDN) -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -91,337 +96,478 @@
         }
     </script>
 </head>
+
 <body class="bg-brand-base text-brand-text font-sans antialiased overflow-x-hidden transition-colors duration-300">
 
     <!-- Contenedor Principal para Accesibilidad -->
     <main id="main-content">
 
-    <div class="fixed top-0 left-0 w-full h-full overflow-hidden -z-10 pointer-events-none">
-        <div class="absolute top-[-20%] left-[-10%] w-[500px] h-[500px] bg-brand-primary/20 rounded-full blur-[120px]"></div>
-        <div class="absolute bottom-[-20%] right-[-10%] w-[600px] h-[600px] bg-brand-secondary/10 rounded-full blur-[150px]"></div>
-    </div>
-
-    <header class="fixed top-0 w-full z-40 glass transition-all duration-300" id="navbar">
-        <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
-            <a href="#" class="flex items-center gap-3">
-                <img src="assets/images/favicon.png" alt="Logo" class="w-8 h-8 rounded-lg shadow-lg border border-brand-border">
-                <span class="font-heading font-bold text-xl tracking-tighter text-brand-text">
-                    Elvira<span class="text-brand-primary">Terán</span>
-                </span>
-            </a>
-            
-            <nav class="hidden md:flex items-center gap-8" aria-label="Navegación principal">
-                <a href="#about" class="text-sm font-medium text-brand-muted hover:text-brand-text transition-colors">Sobre Mí</a>
-                <a href="#tech" class="text-sm font-medium text-brand-muted hover:text-brand-text transition-colors">Tecnologías</a>
-                <a href="#projects" class="text-sm font-medium text-brand-muted hover:text-brand-text transition-colors">Proyectos</a>
-                <a href="#blog" class="text-sm font-medium text-brand-muted hover:text-brand-text transition-colors">Blog</a>
-                <a href="#contact" class="text-sm font-medium text-brand-muted hover:text-brand-text transition-colors">Contacto</a>
-                
-                <button id="theme-toggle" class="border border-brand-border p-2 rounded-lg text-brand-muted hover:text-brand-text hover:bg-brand-surface transition-all focus:outline-none" aria-label="Cambiar tema">
-                    <svg class="w-5 h-5 theme-icon bg-transparent" fill="none" stroke="currentColor" viewBox="0 0 24 24"></svg>
-                </button>
-            </nav>
-
-            <div class="md:hidden flex items-center gap-4">
-                <button id="theme-toggle-mobile" class="border border-brand-border p-1.5 rounded-lg text-brand-muted hover:text-brand-text hover:bg-brand-surface transition-all focus:outline-none" aria-label="Cambiar tema">
-                    <svg class="w-5 h-5 theme-icon bg-transparent" fill="none" stroke="currentColor" viewBox="0 0 24 24"></svg>
-                </button>
-
-                <button id="mobile-menu-btn" aria-label="Abrir menú" class="text-brand-muted hover:text-brand-text focus:outline-none">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                    </svg>
-                </button>
+        <div class="fixed top-0 left-0 w-full h-full overflow-hidden -z-10 pointer-events-none">
+            <div
+                class="absolute top-[-20%] left-[-10%] w-[500px] h-[500px] bg-brand-primary/20 rounded-full blur-[120px]">
+            </div>
+            <div
+                class="absolute bottom-[-20%] right-[-10%] w-[600px] h-[600px] bg-brand-secondary/10 rounded-full blur-[150px]">
             </div>
         </div>
 
-        <nav id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full flex flex-col px-6 py-6 gap-4 bg-brand-base border-t border-brand-border shadow-2xl" aria-label="Navegación móvil">
-            <a href="#about" class="text-base text-brand-muted hover:text-brand-text font-medium">Sobre Mí</a>
-            <a href="#tech" class="text-base text-brand-muted hover:text-brand-text font-medium">Tecnologías</a>
-            <a href="#projects" class="text-base text-brand-muted hover:text-brand-text font-medium">Proyectos</a>
-            <a href="#blog" class="text-base text-brand-muted hover:text-brand-text font-medium">Blog</a>
-            <a href="#contact" class="text-base text-brand-muted hover:text-brand-text font-medium">Contacto</a>
-        </nav>
-    </header>
-
-    <main class="max-w-6xl mx-auto px-6 pt-32 lg:pt-48">
-        
-        <!-- Hero Section -->
-        <section id="hero" class="min-h-[70vh] flex flex-col justify-center animate-fade-in fade-up">
-            <div class="inline-block mb-4 px-3 py-1 rounded-full border border-brand-border bg-brand-surface/50 backdrop-blur-md self-start">
-                <p class="text-xs font-semibold text-brand-primary tracking-wide uppercase">Ingeniería de Software & Frontend</p>
-            </div>
-            <h1 class="text-5xl md:text-7xl lg:text-8xl font-heading font-extrabold text-brand-text leading-tight mb-6">
-                Ingeniería <br />
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-primary to-brand-secondary">
-                    con Propósito.
-                </span>
-            </h1>
-            <p class="text-lg md:text-xl text-brand-muted max-w-2xl mb-10 leading-relaxed font-medium">
-                Hola, soy <span class="text-brand-text border-b-2 border-brand-primary/30">Elvira Terán</span>. Ingeniera de Sistemas especializada en Frontend, creando soluciones digitales robustas, elegantes y eficientes.
-            </p>
-            <div class="flex flex-wrap gap-4">
-                <a href="#projects" class="px-8 py-4 bg-brand-primary hover:bg-cyan-500 text-white font-semibold rounded-lg transition-all duration-300 shadow-lg shadow-brand-primary/25 hover:shadow-brand-primary/40 transform hover:-translate-y-1">
-                    Ver Proyectos
+        <header class="fixed top-0 w-full z-40 glass transition-all duration-300" id="navbar">
+            <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
+                <a href="#" class="flex items-center gap-3">
+                    <img src="assets/images/favicon.png" alt="Logo"
+                        class="w-8 h-8 rounded-lg shadow-lg border border-brand-border">
+                    <span class="font-heading font-bold text-xl tracking-tighter text-brand-text">
+                        Elvira<span class="text-brand-primary">Terán</span>
+                    </span>
                 </a>
-                <a href="#contact" class="px-8 py-4 bg-brand-surface hover:bg-brand-surface/80 text-brand-text font-semibold rounded-lg border border-brand-border transition-all duration-300 transform hover:-translate-y-1 shadow-sm">
-                    Contactar
-                </a>
-            </div>
-        </section>
 
-        <!-- About Me Section -->
-        <section id="about" class="py-24 fade-up">
-            <div class="mb-12">
-                <h2 class="text-sm font-semibold tracking-widest text-brand-secondary uppercase mb-2">Conóceme</h2>
-                <h3 class="text-3xl md:text-4xl font-heading font-bold text-brand-text">Perfil Profesional</h3>
-            </div>
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 items-center">
-                <!-- Imagen/Logo de Marca -->
-                <div class="flex justify-center lg:justify-start">
-                    <figure class="relative group">
-                        <div class="absolute -inset-1 bg-gradient-to-r from-brand-primary to-brand-secondary rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
-                        <img src="assets/images/logo.png" alt="Marca Personal de Elvira Terán - Ingeniera de Sistemas" class="relative w-64 h-64 md:w-80 md:h-80 object-cover rounded-2xl border border-brand-border shadow-2xl">
-                    </figure>
+                <nav class="hidden md:flex items-center gap-8" aria-label="Navegación principal">
+                    <a href="#about"
+                        class="text-sm font-medium text-brand-muted hover:text-brand-text transition-colors">Sobre
+                        Mí</a>
+                    <a href="#tech"
+                        class="text-sm font-medium text-brand-muted hover:text-brand-text transition-colors">Tecnologías</a>
+                    <a href="#projects"
+                        class="text-sm font-medium text-brand-muted hover:text-brand-text transition-colors">Proyectos</a>
+                    <a href="#blog"
+                        class="text-sm font-medium text-brand-muted hover:text-brand-text transition-colors">Blog</a>
+                    <a href="#contact"
+                        class="text-sm font-medium text-brand-muted hover:text-brand-text transition-colors">Contacto</a>
+
+                    <button id="theme-toggle"
+                        class="border border-brand-border p-2 rounded-lg text-brand-muted hover:text-brand-text hover:bg-brand-surface transition-all focus:outline-none"
+                        aria-label="Cambiar tema">
+                        <svg class="w-5 h-5 theme-icon bg-transparent" fill="none" stroke="currentColor"
+                            viewBox="0 0 24 24"></svg>
+                    </button>
+                </nav>
+
+                <div class="md:hidden flex items-center gap-4">
+                    <button id="theme-toggle-mobile"
+                        class="border border-brand-border p-1.5 rounded-lg text-brand-muted hover:text-brand-text hover:bg-brand-surface transition-all focus:outline-none"
+                        aria-label="Cambiar tema">
+                        <svg class="w-5 h-5 theme-icon bg-transparent" fill="none" stroke="currentColor"
+                            viewBox="0 0 24 24"></svg>
+                    </button>
+
+                    <button id="mobile-menu-btn" aria-label="Abrir menú"
+                        class="text-brand-muted hover:text-brand-text focus:outline-none">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
                 </div>
+            </div>
 
-                <!-- Perfil Detallado -->
-                <div class="lg:col-span-2 space-y-6">
-                    <div class="bg-brand-surface p-8 rounded-2xl border border-brand-border shadow-sm transition-colors">
-                        <p class="text-brand-muted leading-relaxed mb-6 italic border-l-4 border-brand-primary pl-4">
-                            "El código es mi lenguaje para construir puentes entre las ideas y la realidad digital."
-                        </p>
-                        <p class="text-brand-muted leading-relaxed mb-6">
-                            Como Ingeniera de Sistemas, me apasiona la arquitectura Frontend, aunque cuento con una base sólida en Backend que me permite entender el ciclo de vida completo de una aplicación.
-                        </p>
-                        <p class="text-brand-muted leading-relaxed">
-                            Mi enfoque combina la precisión de la ingeniería con una estética moderna en Negro, Azul Eléctrico y acabados Platino, asegurando que cada sistema sea tan potente como hermoso.
-                        </p>
+            <nav id="mobile-menu"
+                class="hidden md:hidden absolute top-full left-0 w-full flex flex-col px-6 py-6 gap-4 bg-brand-base border-t border-brand-border shadow-2xl"
+                aria-label="Navegación móvil">
+                <a href="#about" class="text-base text-brand-muted hover:text-brand-text font-medium">Sobre Mí</a>
+                <a href="#tech" class="text-base text-brand-muted hover:text-brand-text font-medium">Tecnologías</a>
+                <a href="#projects" class="text-base text-brand-muted hover:text-brand-text font-medium">Proyectos</a>
+                <a href="#blog" class="text-base text-brand-muted hover:text-brand-text font-medium">Blog</a>
+                <a href="#contact" class="text-base text-brand-muted hover:text-brand-text font-medium">Contacto</a>
+            </nav>
+        </header>
+
+        <main class="max-w-6xl mx-auto px-6 pt-32 lg:pt-48">
+
+            <!-- Hero Section -->
+            <section id="hero" class="min-h-[70vh] flex flex-col justify-center animate-fade-in fade-up">
+                <div
+                    class="inline-block mb-4 px-3 py-1 rounded-full border border-brand-border bg-brand-surface/50 backdrop-blur-md self-start">
+                    <p class="text-xs font-semibold text-brand-primary tracking-wide uppercase">Ingeniería de Software &
+                        Frontend</p>
+                </div>
+                <h1
+                    class="text-5xl md:text-7xl lg:text-8xl font-heading font-extrabold text-brand-text leading-tight mb-6">
+                    Ingeniería <br />
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-primary to-brand-secondary">
+                        con Propósito.
+                    </span>
+                </h1>
+                <p class="text-lg md:text-xl text-brand-muted max-w-2xl mb-10 leading-relaxed font-medium">
+                    Hola, soy <span class="text-brand-text border-b-2 border-brand-primary/30">Elvira Terán</span>.
+                    Ingeniera de Sistemas especializada en Frontend, creando soluciones digitales robustas, elegantes y
+                    eficientes.
+                </p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="#projects"
+                        class="px-8 py-4 bg-brand-primary hover:bg-cyan-500 text-white font-semibold rounded-lg transition-all duration-300 shadow-lg shadow-brand-primary/25 hover:shadow-brand-primary/40 transform hover:-translate-y-1">
+                        Ver Proyectos
+                    </a>
+                    <a href="#contact"
+                        class="px-8 py-4 bg-brand-surface hover:bg-brand-surface/80 text-brand-text font-semibold rounded-lg border border-brand-border transition-all duration-300 transform hover:-translate-y-1 shadow-sm">
+                        Contactar
+                    </a>
+                </div>
+            </section>
+
+            <!-- About Me Section -->
+            <section id="about" class="py-24 fade-up">
+                <div class="mb-12">
+                    <h2 class="text-sm font-semibold tracking-widest text-brand-secondary uppercase mb-2">Conóceme</h2>
+                    <h3 class="text-3xl md:text-4xl font-heading font-bold text-brand-text">Perfil Profesional</h3>
+                </div>
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 items-center">
+                    <!-- Imagen/Logo de Marca -->
+                    <div class="flex justify-center lg:justify-start">
+                        <figure class="relative group">
+                            <div
+                                class="absolute -inset-1 bg-gradient-to-r from-brand-primary to-brand-secondary rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200">
+                            </div>
+                            <img src="assets/images/logo.webp"
+                                alt="Marca Personal de Elvira Terán - Ingeniera de Sistemas"
+                                class="relative w-64 h-64 md:w-80 md:h-80 object-cover rounded-2xl border border-brand-border shadow-2xl">
+                        </figure>
                     </div>
-                    
-                    <div class="grid grid-cols-2 gap-4">
-                        <div class="bg-brand-surface p-6 rounded-xl border border-brand-border shadow-sm text-center">
-                            <span class="block text-4xl font-heading font-bold text-brand-primary mb-2">+5</span>
-                            <span class="text-sm text-brand-muted">Años de Exp.</span>
+
+                    <!-- Perfil Detallado -->
+                    <div class="lg:col-span-2 space-y-6">
+                        <div
+                            class="bg-brand-surface p-8 rounded-2xl border border-brand-border shadow-sm transition-colors">
+                            <p
+                                class="text-brand-muted leading-relaxed mb-6 italic border-l-4 border-brand-primary pl-4">
+                                "El código es mi lenguaje para construir puentes entre las ideas y la realidad digital."
+                            </p>
+                            <p class="text-brand-muted leading-relaxed mb-6">
+                                Como Ingeniera de Sistemas, me apasiona la arquitectura Frontend, aunque cuento con una
+                                base sólida en Backend que me permite entender el ciclo de vida completo de una
+                                aplicación.
+                            </p>
+                            <p class="text-brand-muted leading-relaxed">
+                                Mi enfoque combina la precisión de la ingeniería con una estética moderna en Negro, Azul
+                                Eléctrico y acabados Platino, asegurando que cada sistema sea tan potente como hermoso.
+                            </p>
                         </div>
-                        <div class="bg-brand-surface p-6 rounded-xl border border-brand-border shadow-sm text-center">
-                            <span class="block text-4xl font-heading font-bold text-brand-secondary mb-2">+20</span>
-                            <span class="text-sm text-brand-muted">Proyectos Web</span>
+
+                        <div class="grid grid-cols-2 gap-4">
+                            <div
+                                class="bg-brand-surface p-6 rounded-xl border border-brand-border shadow-sm text-center">
+                                <span class="block text-4xl font-heading font-bold text-brand-primary mb-2">+5</span>
+                                <span class="text-sm text-brand-muted">Años de Exp.</span>
+                            </div>
+                            <div
+                                class="bg-brand-surface p-6 rounded-xl border border-brand-border shadow-sm text-center">
+                                <span class="block text-4xl font-heading font-bold text-brand-secondary mb-2">+20</span>
+                                <span class="text-sm text-brand-muted">Proyectos Web</span>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <!-- Tech Stack Section -->
-        <section id="tech" class="py-24 fade-up">
-            <div class="mb-12">
-                <h2 class="text-sm font-semibold tracking-widest text-brand-primary uppercase mb-2">Herramientas</h2>
-                <h3 class="text-3xl md:text-4xl font-heading font-bold text-brand-text">Stack Tecnológico</h3>
-            </div>
-            <div class="grid grid-cols-2 space-y-4 md:space-y-0 md:grid-cols-4 gap-6">
-                <!-- Stack Items -->
-                <div class="card-gradient group p-1 transition-all rounded-xl shadow-sm">
-                    <div class="bg-brand-base h-full w-full rounded-lg p-6 flex flex-col items-center justify-center gap-3 transition-colors group-hover:bg-brand-surface border border-transparent">
-                        <span class="font-semibold text-brand-text">HTML5 Semántico</span>
-                        <span class="text-xs text-brand-muted">SEO & Accesibilidad</span>
+            <!-- Tech Stack Section -->
+            <section id="tech" class="py-24 fade-up">
+                <div class="mb-12">
+                    <h2 class="text-sm font-semibold tracking-widest text-brand-primary uppercase mb-2">Herramientas
+                    </h2>
+                    <h3 class="text-3xl md:text-4xl font-heading font-bold text-brand-text">Stack Tecnológico</h3>
+                </div>
+                <div class="grid grid-cols-2 space-y-4 md:space-y-0 md:grid-cols-4 gap-6">
+                    <!-- Stack Items -->
+                    <div class="card-gradient group p-1 transition-all rounded-xl shadow-sm">
+                        <div
+                            class="bg-brand-base h-full w-full rounded-lg p-6 flex flex-col items-center justify-center gap-3 transition-colors group-hover:bg-brand-surface border border-transparent">
+                            <span class="font-semibold text-brand-text">HTML5 Semántico</span>
+                            <span class="text-xs text-brand-muted">SEO & Accesibilidad</span>
+                        </div>
+                    </div>
+                    <div class="card-gradient group p-1 transition-all rounded-xl shadow-sm">
+                        <div
+                            class="bg-brand-base h-full w-full rounded-lg p-6 flex flex-col items-center justify-center gap-3 transition-colors group-hover:bg-brand-surface border border-transparent">
+                            <span class="font-semibold text-brand-text">Tailwind CSS</span>
+                            <span class="text-xs text-brand-muted">Estilos Ágiles</span>
+                        </div>
+                    </div>
+                    <div class="card-gradient group p-1 transition-all rounded-xl shadow-sm">
+                        <div
+                            class="bg-brand-base h-full w-full rounded-lg p-6 flex flex-col items-center justify-center gap-3 transition-colors group-hover:bg-brand-surface border border-transparent">
+                            <span class="font-semibold text-brand-text">Vanilla JS</span>
+                            <span class="text-xs text-brand-muted">Lógica de Negocio</span>
+                        </div>
+                    </div>
+                    <div class="card-gradient group p-1 transition-all rounded-xl shadow-sm">
+                        <div
+                            class="bg-brand-base h-full w-full rounded-lg p-6 flex flex-col items-center justify-center gap-3 transition-colors group-hover:bg-brand-surface border border-transparent">
+                            <span class="font-semibold text-brand-text">Git / GitHub</span>
+                            <span class="text-xs text-brand-muted">Control de Versiones</span>
+                        </div>
                     </div>
                 </div>
-                <div class="card-gradient group p-1 transition-all rounded-xl shadow-sm">
-                    <div class="bg-brand-base h-full w-full rounded-lg p-6 flex flex-col items-center justify-center gap-3 transition-colors group-hover:bg-brand-surface border border-transparent">
-                        <span class="font-semibold text-brand-text">Tailwind CSS</span>
-                        <span class="text-xs text-brand-muted">Estilos Ágiles</span>
-                    </div>
-                </div>
-                <div class="card-gradient group p-1 transition-all rounded-xl shadow-sm">
-                    <div class="bg-brand-base h-full w-full rounded-lg p-6 flex flex-col items-center justify-center gap-3 transition-colors group-hover:bg-brand-surface border border-transparent">
-                        <span class="font-semibold text-brand-text">Vanilla JS</span>
-                        <span class="text-xs text-brand-muted">Lógica de Negocio</span>
-                    </div>
-                </div>
-                <div class="card-gradient group p-1 transition-all rounded-xl shadow-sm">
-                    <div class="bg-brand-base h-full w-full rounded-lg p-6 flex flex-col items-center justify-center gap-3 transition-colors group-hover:bg-brand-surface border border-transparent">
-                        <span class="font-semibold text-brand-text">Git / GitHub</span>
-                        <span class="text-xs text-brand-muted">Control de Versiones</span>
-                    </div>
-                </div>
-            </div>
-        </section>
+            </section>
 
-        <!-- Projects Gallery -->
-        <section id="projects" class="py-24 fade-up">
-            <div class="mb-16 md:flex justify-between items-end">
-                <div>
-                    <h2 class="text-sm font-semibold tracking-widest text-brand-secondary uppercase mb-2">Casos de Éxito</h2>
-                    <h3 class="text-3xl md:text-4xl font-heading font-bold text-brand-text">Galería de Proyectos</h3>
+            <!-- Projects Gallery -->
+            <section id="projects" class="py-24 fade-up">
+                <div class="mb-16 md:flex justify-between items-end">
+                    <div>
+                        <h2 class="text-sm font-semibold tracking-widest text-brand-secondary uppercase mb-2">Casos de
+                            Éxito</h2>
+                        <h3 class="text-3xl md:text-4xl font-heading font-bold text-brand-text">Galería de Proyectos
+                        </h3>
+                    </div>
+                    <a href="https://github.com/tu-usuario" target="_blank" rel="noopener noreferrer"
+                        class="hidden md:inline-flex items-center gap-2 text-brand-primary hover:text-cyan-400 transition-colors">
+                        Ver GitHub Completo &rarr;
+                    </a>
                 </div>
-                <a href="https://github.com/tu-usuario" target="_blank" rel="noopener noreferrer" class="hidden md:inline-flex items-center gap-2 text-brand-primary hover:text-cyan-400 transition-colors">
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Project 1 -->
+                    <article
+                        class="project-card group bg-brand-surface rounded-2xl overflow-hidden border border-brand-border shadow-sm hover:border-brand-primary/50 transition-all duration-300 flex flex-col">
+                        <div class="relative h-56 overflow-hidden bg-brand-base border-b border-brand-border">
+                            <img src="assets/images/ecommerce_dashboard.webp" alt="E-commerce Dashboard" loading="lazy"
+                                class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500">
+                        </div>
+                        <div class="p-6 flex-1 flex flex-col">
+                            <h4 class="text-xl font-heading font-bold text-brand-text mb-2">Dashboard E-Commerce</h4>
+                            <p class="text-brand-muted text-sm mb-6 flex-1">Plataforma administrativa de alto
+                                rendimiento para ventas online, integrada con métricas en tiempo real y UI moderna.</p>
+                            <div class="flex flex-wrap gap-2 mb-6">
+                                <span
+                                    class="px-2 py-1 text-xs font-medium rounded-md bg-brand-primary/10 text-brand-primary border border-brand-primary/20">HTML5</span>
+                                <span
+                                    class="px-2 py-1 text-xs font-medium rounded-md bg-brand-primary/10 text-brand-primary border border-brand-primary/20">Tailwind</span>
+                                <span
+                                    class="px-2 py-1 text-xs font-medium rounded-md bg-brand-primary/10 text-brand-primary border border-brand-primary/20">Chart.js</span>
+                            </div>
+                            <div class="flex items-center gap-4 mt-auto">
+                                <a href="#"
+                                    class="text-sm font-semibold text-brand-text hover:text-brand-primary transition-colors flex items-center gap-1">
+                                    Demo en Vivo
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
+                                        </path>
+                                    </svg>
+                                </a>
+                                <a href="#"
+                                    class="text-sm font-semibold text-brand-muted hover:text-brand-text transition-colors flex items-center gap-1">
+                                    Código
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Project 2 -->
+                    <article
+                        class="project-card group bg-brand-surface rounded-2xl overflow-hidden border border-brand-border shadow-sm hover:border-brand-secondary/50 transition-all duration-300 flex flex-col">
+                        <div class="relative h-56 overflow-hidden bg-brand-base border-b border-brand-border">
+                            <img src="assets/images/saas_analytics.webp"
+                                alt="Plataforma de Analíticas SaaS diseñada por Elvira Terán" loading="lazy"
+                                class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500">
+                        </div>
+                        <div class="p-6 flex-1 flex flex-col">
+                            <h4 class="text-xl font-heading font-bold text-brand-text mb-2">SaaS Data Analytics</h4>
+                            <p class="text-brand-muted text-sm mb-6 flex-1">Interfaz Glassmorphism sofisticada para
+                                análisis de datos orientada a software como servicio, diseñada con principios
+                                Mobile-First.</p>
+                            <div class="flex flex-wrap gap-2 mb-6">
+                                <span
+                                    class="px-2 py-1 text-xs font-medium rounded-md bg-brand-secondary/10 text-brand-secondary border border-brand-secondary/20">Vanilla
+                                    JS</span>
+                                <span
+                                    class="px-2 py-1 text-xs font-medium rounded-md bg-brand-secondary/10 text-brand-secondary border border-brand-secondary/20">CSS
+                                    Grid</span>
+                                <span
+                                    class="px-2 py-1 text-xs font-medium rounded-md bg-brand-secondary/10 text-brand-secondary border border-brand-secondary/20">API
+                                    REST</span>
+                            </div>
+                            <div class="flex items-center gap-4 mt-auto">
+                                <a href="#"
+                                    class="text-sm font-semibold text-brand-text hover:text-brand-secondary transition-colors flex items-center gap-1">
+                                    Demo en Vivo
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
+                                        </path>
+                                    </svg>
+                                </a>
+                                <a href="#"
+                                    class="text-sm font-semibold text-brand-muted hover:text-brand-text transition-colors flex items-center gap-1">
+                                    Código
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Project 3 -->
+                    <article
+                        class="project-card group bg-brand-surface rounded-2xl overflow-hidden border border-brand-border shadow-sm hover:border-brand-primary/50 transition-all duration-300 flex flex-col">
+                        <div class="relative h-56 overflow-hidden bg-brand-base border-b border-brand-border">
+                            <img src="assets/images/healthcare_app.webp" alt="Healthcare Dashboard" loading="lazy"
+                                class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500">
+                        </div>
+                        <div class="p-6 flex-1 flex flex-col">
+                            <h4 class="text-xl font-heading font-bold text-brand-text mb-2">Healthcare App UI</h4>
+                            <p class="text-brand-muted text-sm mb-6 flex-1">Sistema minimalista y limpio para la gestión
+                                de citas médicas y expedientes de pacientes enfocada en UX.</p>
+                            <div class="flex flex-wrap gap-2 mb-6">
+                                <span
+                                    class="px-2 py-1 text-xs font-medium rounded-md bg-brand-primary/10 text-brand-primary border border-brand-primary/20">HTML5</span>
+                                <span
+                                    class="px-2 py-1 text-xs font-medium rounded-md bg-brand-primary/10 text-brand-primary border border-brand-primary/20">Modular
+                                    CSS</span>
+                                <span
+                                    class="px-2 py-1 text-xs font-medium rounded-md bg-brand-primary/10 text-brand-primary border border-brand-primary/20">Webpack</span>
+                            </div>
+                            <div class="flex items-center gap-4 mt-auto">
+                                <a href="#"
+                                    class="text-sm font-semibold text-brand-text hover:text-brand-primary transition-colors flex items-center gap-1">
+                                    Demo en Vivo
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
+                                        </path>
+                                    </svg>
+                                </a>
+                                <a href="#"
+                                    class="text-sm font-semibold text-brand-muted hover:text-brand-text transition-colors flex items-center gap-1">
+                                    Código
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <a href="https://github.com/tu-usuario" target="_blank" rel="noopener noreferrer"
+                    class="mt-8 flex md:hidden items-center justify-center gap-2 text-brand-primary hover:text-cyan-400 transition-colors">
                     Ver GitHub Completo &rarr;
                 </a>
-            </div>
+            </section>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Project 1 -->
-                <article class="project-card group bg-brand-surface rounded-2xl overflow-hidden border border-brand-border shadow-sm hover:border-brand-primary/50 transition-all duration-300 flex flex-col">
-                    <div class="relative h-56 overflow-hidden bg-brand-base border-b border-brand-border">
-                        <img src="assets/images/ecommerce_dashboard.png" alt="E-commerce Dashboard" loading="lazy" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500">
+            <!-- Blog Section (Inyectada dinámicamente) -->
+            <section id="blog" class="py-24 fade-up">
+                <div class="mb-16 md:flex justify-between items-end border-b border-brand-border pb-6">
+                    <div>
+                        <h2 class="text-sm font-semibold tracking-widest text-brand-primary uppercase mb-2">Artículos
+                            Recientes</h2>
+                        <h3 class="text-3xl md:text-4xl font-heading font-bold text-brand-text">Blog & Notas Técnicas
+                        </h3>
                     </div>
-                    <div class="p-6 flex-1 flex flex-col">
-                        <h4 class="text-xl font-heading font-bold text-brand-text mb-2">Dashboard E-Commerce</h4>
-                        <p class="text-brand-muted text-sm mb-6 flex-1">Plataforma administrativa de alto rendimiento para ventas online, integrada con métricas en tiempo real y UI moderna.</p>
-                        <div class="flex flex-wrap gap-2 mb-6">
-                            <span class="px-2 py-1 text-xs font-medium rounded-md bg-brand-primary/10 text-brand-primary border border-brand-primary/20">HTML5</span>
-                            <span class="px-2 py-1 text-xs font-medium rounded-md bg-brand-primary/10 text-brand-primary border border-brand-primary/20">Tailwind</span>
-                            <span class="px-2 py-1 text-xs font-medium rounded-md bg-brand-primary/10 text-brand-primary border border-brand-primary/20">Chart.js</span>
-                        </div>
-                        <div class="flex items-center gap-4 mt-auto">
-                            <a href="#" class="text-sm font-semibold text-brand-text hover:text-brand-primary transition-colors flex items-center gap-1">
-                                Demo en Vivo 
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
-                            </a>
-                            <a href="#" class="text-sm font-semibold text-brand-muted hover:text-brand-text transition-colors flex items-center gap-1">
-                                Código 
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
-                            </a>
-                        </div>
-                    </div>
-                </article>
+                </div>
 
-                <!-- Project 2 -->
-                <article class="project-card group bg-brand-surface rounded-2xl overflow-hidden border border-brand-border shadow-sm hover:border-brand-secondary/50 transition-all duration-300 flex flex-col">
-                    <div class="relative h-56 overflow-hidden bg-brand-base border-b border-brand-border">
-                        <img src="assets/images/saas_analytics.png" alt="Plataforma de Analíticas SaaS diseñada por Elvira Terán" loading="lazy" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500">
+                <!-- Blog Grid & Loader CSS -->
+                <div id="blog-container" class="relative min-h-[300px]">
+                    <div id="blog-loader"
+                        class="absolute inset-x-0 top-10 flex flex-col items-center justify-center gap-4 text-brand-muted transition-opacity duration-300 mt-10">
+                        <svg class="animate-spin h-8 w-8 text-brand-primary" xmlns="http://www.w3.org/2000/svg"
+                            fill="none" viewBox="0 0 24 24">
+                            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4">
+                            </circle>
+                            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path>
+                        </svg>
+                        <span class="text-sm font-medium tracking-wide">Cargando artículos...</span>
                     </div>
-                    <div class="p-6 flex-1 flex flex-col">
-                        <h4 class="text-xl font-heading font-bold text-brand-text mb-2">SaaS Data Analytics</h4>
-                        <p class="text-brand-muted text-sm mb-6 flex-1">Interfaz Glassmorphism sofisticada para análisis de datos orientada a software como servicio, diseñada con principios Mobile-First.</p>
-                        <div class="flex flex-wrap gap-2 mb-6">
-                            <span class="px-2 py-1 text-xs font-medium rounded-md bg-brand-secondary/10 text-brand-secondary border border-brand-secondary/20">Vanilla JS</span>
-                            <span class="px-2 py-1 text-xs font-medium rounded-md bg-brand-secondary/10 text-brand-secondary border border-brand-secondary/20">CSS Grid</span>
-                            <span class="px-2 py-1 text-xs font-medium rounded-md bg-brand-secondary/10 text-brand-secondary border border-brand-secondary/20">API REST</span>
-                        </div>
-                        <div class="flex items-center gap-4 mt-auto">
-                            <a href="#" class="text-sm font-semibold text-brand-text hover:text-brand-secondary transition-colors flex items-center gap-1">
-                                Demo en Vivo 
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
-                            </a>
-                            <a href="#" class="text-sm font-semibold text-brand-muted hover:text-brand-text transition-colors flex items-center gap-1">
-                                Código 
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
-                            </a>
-                        </div>
-                    </div>
-                </article>
 
-                <!-- Project 3 -->
-                <article class="project-card group bg-brand-surface rounded-2xl overflow-hidden border border-brand-border shadow-sm hover:border-brand-primary/50 transition-all duration-300 flex flex-col">
-                    <div class="relative h-56 overflow-hidden bg-brand-base border-b border-brand-border">
-                        <img src="assets/images/healthcare_app.png" alt="Healthcare Dashboard" loading="lazy" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500">
+                    <div id="blog-grid"
+                        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 lg:mx-24 gap-8 opacity-0 transition-opacity duration-700">
+                        <!-- Posts inyectados por main.js -->
                     </div>
-                    <div class="p-6 flex-1 flex flex-col">
-                        <h4 class="text-xl font-heading font-bold text-brand-text mb-2">Healthcare App UI</h4>
-                        <p class="text-brand-muted text-sm mb-6 flex-1">Sistema minimalista y limpio para la gestión de citas médicas y expedientes de pacientes enfocada en UX.</p>
-                        <div class="flex flex-wrap gap-2 mb-6">
-                            <span class="px-2 py-1 text-xs font-medium rounded-md bg-brand-primary/10 text-brand-primary border border-brand-primary/20">HTML5</span>
-                            <span class="px-2 py-1 text-xs font-medium rounded-md bg-brand-primary/10 text-brand-primary border border-brand-primary/20">Modular CSS</span>
-                            <span class="px-2 py-1 text-xs font-medium rounded-md bg-brand-primary/10 text-brand-primary border border-brand-primary/20">Webpack</span>
-                        </div>
-                        <div class="flex items-center gap-4 mt-auto">
-                            <a href="#" class="text-sm font-semibold text-brand-text hover:text-brand-primary transition-colors flex items-center gap-1">
-                                Demo en Vivo 
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
-                            </a>
-                            <a href="#" class="text-sm font-semibold text-brand-muted hover:text-brand-text transition-colors flex items-center gap-1">
-                                Código 
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
-                            </a>
-                        </div>
-                    </div>
-                </article>
-            </div>
-            
-            <a href="https://github.com/tu-usuario" target="_blank" rel="noopener noreferrer" class="mt-8 flex md:hidden items-center justify-center gap-2 text-brand-primary hover:text-cyan-400 transition-colors">
-                Ver GitHub Completo &rarr;
-            </a>
-        </section>
 
-        <!-- Blog Section (Inyectada dinámicamente) -->
-        <section id="blog" class="py-24 fade-up">
-            <div class="mb-16 md:flex justify-between items-end border-b border-brand-border pb-6">
+                    <div id="blog-error"
+                        class="hidden text-center p-8 bg-brand-surface border border-red-500/20 rounded-xl mt-10 shadow-sm">
+                        <p class="text-red-500 font-semibold mb-2">No se pudieron cargar los artículos.</p>
+                        <span class="text-sm text-brand-muted">Asegúrate de que los archivos en la carpeta
+                            <code>data/</code> y <code>posts/</code> existan correctamente.</span>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- Footer / Contact -->
+        <footer id="contact" class="border-t border-brand-border bg-brand-surface/30 mt-12">
+            <div
+                class="max-w-6xl mx-auto px-6 py-12 flex flex-col md:flex-row justify-between items-center gap-6 text-center md:text-left">
                 <div>
-                    <h2 class="text-sm font-semibold tracking-widest text-brand-primary uppercase mb-2">Artículos Recientes</h2>
-                    <h3 class="text-3xl md:text-4xl font-heading font-bold text-brand-text">Blog & Notas Técnicas</h3>
+                    <h4 class="font-heading font-bold text-2xl text-brand-text mb-2">Elvira<span
+                            class="text-brand-primary">Terán</span></h4>
+                    <p class="text-sm text-brand-muted border-l-2 border-brand-primary pl-3">Ingeniera de Sistemas |
+                        Especialista Frontend</p>
+                </div>
+
+                <div class="flex items-center gap-6">
+                    <a href="#"
+                        class="text-brand-muted hover:text-brand-primary transition-colors hover:-translate-y-1 transform duration-300"
+                        aria-label="LinkedIn">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                        </svg>
+                    </a>
+                    <a href="#"
+                        class="text-brand-muted hover:text-brand-text transition-colors hover:-translate-y-1 transform duration-300"
+                        aria-label="GitHub">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                        </svg>
+                    </a>
                 </div>
             </div>
+            <div class="border-t border-brand-border py-4">
+                <p class="text-center text-xs text-brand-muted">&copy; 2026 Dev.Portfolio. Todos los derechos
+                    reservados.</p>
+            </div>
+        </footer>
 
-            <!-- Blog Grid & Loader CSS -->
-            <div id="blog-container" class="relative min-h-[300px]">
-                <div id="blog-loader" class="absolute inset-x-0 top-10 flex flex-col items-center justify-center gap-4 text-brand-muted transition-opacity duration-300 mt-10">
-                    <svg class="animate-spin h-8 w-8 text-brand-primary" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path>
+        <!-- Blog Article Modal (SPA System) -->
+        <div id="blog-modal"
+            class="fixed inset-0 z-[100] hidden items-center justify-center backdrop-blur-md bg-brand-base/80 p-4 md:p-10 transition-opacity duration-300 opacity-0">
+            <div class="relative w-full max-w-4xl max-h-[90vh] bg-brand-surface border border-brand-border rounded-2xl shadow-2xl flex flex-col overflow-hidden transform scale-95 transition-transform duration-300"
+                id="blog-modal-content-wrapper">
+                <button id="close-modal-btn"
+                    class="absolute top-4 right-4 z-10 w-10 h-10 flex items-center justify-center rounded-full bg-brand-base border border-brand-border text-brand-text hover:bg-brand-primary hover:text-white transition-colors"
+                    aria-label="Cerrar artículo">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+                        </path>
                     </svg>
-                    <span class="text-sm font-medium tracking-wide">Cargando artículos...</span>
-                </div>
-                
-                <div id="blog-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 lg:mx-24 gap-8 opacity-0 transition-opacity duration-700">
-                    <!-- Posts inyectados por main.js -->
-                </div>
-                
-                <div id="blog-error" class="hidden text-center p-8 bg-brand-surface border border-red-500/20 rounded-xl mt-10 shadow-sm">
-                    <p class="text-red-500 font-semibold mb-2">No se pudieron cargar los artículos.</p>
-                    <span class="text-sm text-brand-muted">Asegúrate de que los archivos en la carpeta <code>data/</code> y <code>posts/</code> existan correctamente.</span>
-                </div>
-            </div>
-        </section>
-
-    </main>
-
-    <!-- Footer / Contact -->
-    <footer id="contact" class="border-t border-brand-border bg-brand-surface/30 mt-12">
-        <div class="max-w-6xl mx-auto px-6 py-12 flex flex-col md:flex-row justify-between items-center gap-6 text-center md:text-left">
-            <div>
-                <h4 class="font-heading font-bold text-2xl text-brand-text mb-2">Elvira<span class="text-brand-primary">Terán</span></h4>
-                <p class="text-sm text-brand-muted border-l-2 border-brand-primary pl-3">Ingeniera de Sistemas | Especialista Frontend</p>
-            </div>
-            
-            <div class="flex items-center gap-6">
-                <a href="#" class="text-brand-muted hover:text-brand-primary transition-colors hover:-translate-y-1 transform duration-300" aria-label="LinkedIn">
-                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-                </a>
-                <a href="#" class="text-brand-muted hover:text-brand-text transition-colors hover:-translate-y-1 transform duration-300" aria-label="GitHub">
-                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                </a>
-            </div>
-        </div>
-        <div class="border-t border-brand-border py-4">
-            <p class="text-center text-xs text-brand-muted">&copy; 2026 Dev.Portfolio. Todos los derechos reservados.</p>
-        </div>
-    </footer>
-
-    <!-- Blog Article Modal (SPA System) -->
-    <div id="blog-modal" class="fixed inset-0 z-[100] hidden items-center justify-center backdrop-blur-md bg-brand-base/80 p-4 md:p-10 transition-opacity duration-300 opacity-0">
-        <div class="relative w-full max-w-4xl max-h-[90vh] bg-brand-surface border border-brand-border rounded-2xl shadow-2xl flex flex-col overflow-hidden transform scale-95 transition-transform duration-300" id="blog-modal-content-wrapper">
-            <button id="close-modal-btn" class="absolute top-4 right-4 z-10 w-10 h-10 flex items-center justify-center rounded-full bg-brand-base border border-brand-border text-brand-text hover:bg-brand-primary hover:text-white transition-colors" aria-label="Cerrar artículo">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-            </button>
-            <div class="overflow-y-auto w-full h-full p-8 md:p-12">
-                <div id="modal-post-meta" class="flex flex-wrap items-center gap-4 mb-6">
-                    <span id="modal-post-date" class="text-sm font-medium text-brand-primary bg-brand-primary/10 px-3 py-1 rounded-md">Fecha</span>
-                    <span class="text-xs font-semibold text-brand-muted flex items-center gap-1 bg-brand-surface border border-brand-border px-3 py-1 rounded-md">
-                        <svg class="w-4 h-4 text-brand-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
-                        <span id="modal-post-views">...</span> visitas
-                    </span>
-                </div>
-                <h2 id="modal-post-title" class="text-3xl md:text-4xl font-heading font-extrabold text-brand-text mb-8">Título del Artículo</h2>
-                <div id="modal-post-body" class="prose prose-invert prose-brand text-brand-text leading-relaxed">
-                    <!-- Contenido inyectado dinámicamente -->
+                </button>
+                <div class="overflow-y-auto w-full h-full p-8 md:p-12">
+                    <div id="modal-post-meta" class="flex flex-wrap items-center gap-4 mb-6">
+                        <span id="modal-post-date"
+                            class="text-sm font-medium text-brand-primary bg-brand-primary/10 px-3 py-1 rounded-md">Fecha</span>
+                        <span
+                            class="text-xs font-semibold text-brand-muted flex items-center gap-1 bg-brand-surface border border-brand-border px-3 py-1 rounded-md">
+                            <svg class="w-4 h-4 text-brand-primary" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z">
+                                </path>
+                            </svg>
+                            <span id="modal-post-views">...</span> visitas
+                        </span>
+                    </div>
+                    <h2 id="modal-post-title"
+                        class="text-3xl md:text-4xl font-heading font-extrabold text-brand-text mb-8">Título del
+                        Artículo</h2>
+                    <div id="modal-post-body" class="prose prose-invert prose-brand text-brand-text leading-relaxed">
+                        <!-- Contenido inyectado dinámicamente -->
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <!-- Scripts -->
-    <script src="js/main.js"></script>
+        <!-- Scripts -->
+        <script src="js/main.js"></script>
 </body>
+
 </html>
