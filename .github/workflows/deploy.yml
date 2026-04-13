@@ -25,7 +25,7 @@ jobs:
         with:
           node-version: 20
       - name: Compilar y Minificar Tailwind CSS
-        run: npx tailwindcss -i ./css/input.css -o ./css/output.css --minify
+        run: npx -y tailwindcss@latest -i ./css/input.css -o ./css/output.css --minify
       - name: Subir artefactos
         uses: actions/upload-pages-artifact@v3
         with:
