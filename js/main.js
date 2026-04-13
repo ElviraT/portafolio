@@ -120,7 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <h4 class="text-xl font-heading font-bold text-brand-text mb-3 group-hover:text-brand-primary transition-colors">${post.titulo}</h4>
                         <p class="text-brand-muted text-sm mb-6 flex-1 opacity-90 leading-relaxed">${post.resumen}</p>
                         <div class="mt-auto text-sm font-semibold text-brand-primary flex items-center gap-2">
-                            Leer Artículo 
+                            <span data-i18n="blog_read_more">Leer Artículo</span> 
                             <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
                         </div>
                     </div>
@@ -137,6 +137,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Re-inicializar el efecto glow para las nuevas tarjetas inyectadas del blog
         initGlowEffect();
+
+        // Traducir las nuevas tarjetas inyectadas
+        if (typeof applyTranslations === 'function') applyTranslations();
     }
 
     // Credenciales de Supabase (Reemplazar con tus datos)
@@ -185,10 +188,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const bodyContent = document.getElementById('modal-post-body');
         const viewCountElement = document.getElementById('modal-post-views');
 
-        bodyContent.innerHTML = '<p class="text-center py-10">Cargando contenido...</p>';
+        bodyContent.innerHTML = '<p class="text-center py-10" data-i18n="modal_loading">Cargando contenido...</p>';
         viewCountElement.textContent = '...';
         document.getElementById('modal-post-title').textContent = post.titulo;
         document.getElementById('modal-post-date').textContent = post.fecha;
+
+        if (typeof applyTranslations === 'function') applyTranslations();
 
         // Lógica de Conteo Supabase
         const hasViewedKey = `viewed_${post.id}`;
@@ -306,7 +311,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (langToggleBtnMobile) langToggleBtnMobile.textContent = textToShow;
     };
 
-    const applyTranslations = () => {
+    function applyTranslations() {
         document.querySelectorAll('[data-i18n]').forEach(el => {
             const key = el.getAttribute('data-i18n');
             if (translations[currentLang] && translations[currentLang][key]) {
@@ -314,7 +319,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
         document.documentElement.lang = currentLang; // Para SEO y Accesibilidad
-    };
+    }
 
     const loadTranslations = async () => {
         try {
