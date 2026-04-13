@@ -289,4 +289,53 @@ document.addEventListener('DOMContentLoaded', () => {
             if (e.target === blogModal) closeBtn.click();
         });
     }
+
+    // =========================================================================
+    // 6. SISTEMA DE INTERNACIONALIZACIÓN (i18n)
+    // =========================================================================
+    const langToggleBtn = document.getElementById('lang-toggle');
+    const langToggleBtnMobile = document.getElementById('lang-toggle-mobile');
+
+    let currentLang = localStorage.getItem('lang') || 'es';
+    let translations = {};
+
+    const updateLangButton = () => {
+        // Si estamos en 'es', mostramos 'EN' como opción a cambiar, y viceversa.
+        const textToShow = currentLang === 'es' ? 'EN' : 'ES';
+        if (langToggleBtn) langToggleBtn.textContent = textToShow;
+        if (langToggleBtnMobile) langToggleBtnMobile.textContent = textToShow;
+    };
+
+    const applyTranslations = () => {
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            if (translations[currentLang] && translations[currentLang][key]) {
+                el.innerHTML = translations[currentLang][key]; // innerHTML permite etiquetas <span> como las del titulo
+            }
+        });
+        document.documentElement.lang = currentLang; // Para SEO y Accesibilidad
+    };
+
+    const loadTranslations = async () => {
+        try {
+            const res = await fetch('data/translations.json');
+            translations = await res.json();
+            applyTranslations();
+            updateLangButton();
+        } catch (error) {
+            console.error('Error al cargar traducciones:', error);
+        }
+    };
+
+    const toggleLang = () => {
+        currentLang = currentLang === 'es' ? 'en' : 'es';
+        localStorage.setItem('lang', currentLang);
+        applyTranslations();
+        updateLangButton();
+    };
+
+    if (langToggleBtn) langToggleBtn.addEventListener('click', toggleLang);
+    if (langToggleBtnMobile) langToggleBtnMobile.addEventListener('click', toggleLang);
+
+    loadTranslations(); // Inicializar al cargar la página
 });
