@@ -117,4 +117,17 @@
                 rgba(59, 130, 246, 0.12),
                 transparent 40%);
     }
+
+    /* Estilos para las burbujas del chat de IA */
+    .chat-bubble-ai {
+        @apply bg-brand-base p-3 rounded-lg rounded-bl-none max-w-xs text-sm text-brand-muted leading-relaxed;
+    }
+
+    .chat-bubble-user {
+        @apply bg-brand-primary text-white p-3 rounded-lg rounded-br-none max-w-xs text-sm leading-relaxed ml-auto;
+    }
+
+    .chat-bubble-loading {
+        @apply bg-brand-base p-3 rounded-lg rounded-bl-none max-w-xs text-sm text-brand-muted leading-relaxed flex items-center gap-2;
+    }
 }

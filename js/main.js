@@ -350,4 +350,85 @@ document.addEventListener('DOMContentLoaded', () => {
     if (langToggleBtnMobile) langToggleBtnMobile.addEventListener('click', toggleLang);
 
     loadTranslations(); // Inicializar al cargar la página
+
+    // =========================================================================
+    // 7. ASISTENTE DE IA
+    // =========================================================================
+    const chatToggleBtn = document.getElementById('ai-chat-toggle');
+    const chatWindow = document.getElementById('ai-chat-window');
+    const chatMessages = document.getElementById('ai-chat-messages');
+    const chatForm = document.getElementById('ai-chat-form');
+    const chatInput = document.getElementById('ai-chat-input');
+    const submitBtn = chatForm.querySelector('button[type="submit"]');
+
+    let chatHistory = [];
+
+    const toggleChatWindow = () => {
+        if (chatWindow.classList.contains('hidden')) {
+            chatWindow.classList.remove('hidden');
+            setTimeout(() => {
+                chatWindow.classList.remove('opacity-0', 'translate-y-4');
+            }, 10);
+        } else {
+            chatWindow.classList.add('opacity-0', 'translate-y-4');
+            setTimeout(() => {
+                chatWindow.classList.add('hidden');
+            }, 300);
+        }
+    };
+
+    const addMessageToChat = (sender, message) => {
+        const bubble = document.createElement('div');
+        bubble.className = sender === 'user' ? 'chat-bubble-user' : 'chat-bubble-ai';
+        bubble.innerHTML = `<p>${message}</p>`; // Usamos innerHTML para renderizar Markdown simple si la IA lo envía
+        chatMessages.appendChild(bubble);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    };
+
+    const handleChatSubmit = async (e) => {
+        e.preventDefault();
+        const question = chatInput.value.trim();
+        if (!question) return;
+
+        addMessageToChat('user', question);
+        chatInput.value = '';
+        submitBtn.disabled = true;
+
+        // Mostrar indicador de "escribiendo..."
+        const loadingBubble = document.createElement('div');
+        loadingBubble.className = 'chat-bubble-loading';
+        loadingBubble.innerHTML = `
+            <div class="w-2 h-2 bg-brand-primary rounded-full animate-pulse" style="animation-delay: 0s;"></div>
+            <div class="w-2 h-2 bg-brand-primary rounded-full animate-pulse" style="animation-delay: 0.2s;"></div>
+            <div class="w-2 h-2 bg-brand-primary rounded-full animate-pulse" style="animation-delay: 0.4s;"></div>
+        `;
+        chatMessages.appendChild(loadingBubble);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+
+        try {
+            const res = await fetch('/api/chat', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ question, history: chatHistory }),
+            });
+
+            if (!res.ok) throw new Error('La respuesta del servidor no fue OK');
+
+            const data = await res.json();
+            addMessageToChat('ai', data.answer);
+
+            // Actualizar historial para mantener contexto
+            chatHistory.push({ role: 'user', parts: [{ text: question }] });
+            chatHistory.push({ role: 'model', parts: [{ text: data.answer }] });
+
+        } catch (error) {
+            addMessageToChat('ai', 'Lo siento, estoy teniendo problemas para conectarme. Por favor, inténtalo de nuevo más tarde.');
+        } finally {
+            chatMessages.removeChild(loadingBubble);
+            submitBtn.disabled = false;
+        }
+    };
+
+    if (chatToggleBtn) chatToggleBtn.addEventListener('click', toggleChatWindow);
+    if (chatForm) chatForm.addEventListener('submit', handleChatSubmit);
 });

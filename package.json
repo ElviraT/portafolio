@@ -21,5 +21,8 @@
   "homepage": "https://github.com/ElviraT/portafolio#readme",
   "devDependencies": {
     "tailwindcss": "^3.4.19"
+  },
+  "dependencies": {
+    "@google/generative-ai": "^0.24.1"
   }
 }
