@@ -314,8 +314,15 @@ document.addEventListener('DOMContentLoaded', () => {
     function applyTranslations() {
         document.querySelectorAll('[data-i18n]').forEach(el => {
             const key = el.getAttribute('data-i18n');
+            const attr = el.getAttribute('data-i18n-attr'); // ej: 'aria-label'
+
             if (translations[currentLang] && translations[currentLang][key]) {
-                el.innerHTML = translations[currentLang][key]; // innerHTML permite etiquetas <span> como las del titulo
+                const translation = translations[currentLang][key];
+                if (attr) {
+                    el.setAttribute(attr, translation);
+                } else {
+                    el.innerHTML = translation; // innerHTML permite etiquetas <span> como las del titulo
+                }
             }
         });
         document.documentElement.lang = currentLang; // Para SEO y Accesibilidad
