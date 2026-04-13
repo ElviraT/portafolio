@@ -25,9 +25,11 @@ jobs:
         with:
           node-version: 20
       - name: Instalar Tailwind CSS
-        run: npm install -g tailwindcss
+        run: |
+          npm init -y
+          npm install tailwindcss@3
       - name: Compilar y Minificar Tailwind CSS
-        run: tailwindcss -i ./css/input.css -o ./css/output.css --minify
+        run: npx tailwindcss -i ./css/input.css -o ./css/output.css --minify
       - name: Subir artefactos
         uses: actions/upload-pages-artifact@v3
         with:
