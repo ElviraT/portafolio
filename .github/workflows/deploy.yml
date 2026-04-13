@@ -24,8 +24,10 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
+      - name: Instalar Tailwind CSS
+        run: npm install -g tailwindcss
       - name: Compilar y Minificar Tailwind CSS
-        run: npx -y tailwindcss@latest -i ./css/input.css -o ./css/output.css --minify
+        run: tailwindcss -i ./css/input.css -o ./css/output.css --minify
       - name: Subir artefactos
         uses: actions/upload-pages-artifact@v3
         with:
