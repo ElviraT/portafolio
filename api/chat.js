@@ -1,21 +1,22 @@
 const { GoogleGenerativeAI } = require('@google/generative-ai');
 
-// Asegúrate de que la variable de entorno está siendo leída
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-
 module.exports = async (req, res) => {
     if (req.method !== 'POST') {
         return res.status(405).json({ error: 'Method Not Allowed' });
     }
 
     try {
+        if (!process.env.GEMINI_API_KEY) {
+            console.error('ERROR CRÍTICO: La variable de entorno GEMINI_API_KEY no está definida.');
+            return res.status(500).json({ error: 'Server configuration error: Missing API Key' });
+        }
+
+        const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
         const { question, history } = req.body;
 
         if (!question) {
             return res.status(400).json({ error: 'Question is required.' });
         }
-
-        const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
 
         // El "System Prompt": Le damos a la IA su personalidad y contexto.
         const persona = `
@@ -40,12 +41,17 @@ module.exports = async (req, res) => {
             5. Sé breve y directo.
         `;
 
+        const model = genAI.getGenerativeModel({ 
+            model: 'gemini-1.5-flash',
+            systemInstruction: persona
+        });
+
         const chat = model.startChat({
             history: history || [],
             generationConfig: { temperature: 0.7 },
         });
 
-        const result = await chat.sendMessage(`${persona}\n\nPREGUNTA: ${question}`);
+        const result = await chat.sendMessage(question);
         const responseText = await result.response.text();
 
         res.status(200).json({ answer: responseText });
